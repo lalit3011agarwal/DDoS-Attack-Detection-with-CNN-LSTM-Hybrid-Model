@@ -1,35 +1,56 @@
-#@# DDoS-Attack-Detection-with-CNN-LSTM-Hybrid-Model
-Absolutely! Here's a GitHub repository description you can use, highlighting the key features of your project and its significance:
+# DDoS Attack Detection using Convolutional Neural Network-Long Short-Term Memory (CNN-LSTM)
 
-Repository Title: DDoS Attack Detection with CNN-LSTM Hybrid Model
+## Dataset Exploration
+- CIC-IDS2017 dataset used for DDoS attack detection
+- Contains both benign and DDoS attack network traffic flows
+- Friday subset used, including various DDoS attack types
+- 66,237 network flows: 31,284 benign, 34,952 DDoS attack instances
 
-Description:
+## Preprocessing
+- Removal of rows with missing values
+- Replacement of infinite values with NaN
+- Conversion of categorical labels to binary (0 for benign, 1 for DDoS)
+- Dataset split into training (46,365 samples) and testing (19,871 samples) sets
 
-This repository contains the code and resources for a comprehensive study on detecting Distributed Denial of Service (DDoS) attacks in network traffic using a hybrid Convolutional Neural Network-Long Short-Term Memory (CNN-LSTM) model. The project focuses on the CIC-IDS2017 dataset, specifically its Friday subset, which provides a realistic and diverse set of benign and DDoS traffic samples.
+## Feature Engineering
+- Grouping of related features:
+  - Packet Counts
+  - Packet Lengths
+  - Length Stats
+  - Flow Features
+  - IAT Features
+- Data transformation into 2D grids for CNN processing
+- Standard scaling applied to normalize numerical features
 
-Key Features:
+## Model Architecture
+- CNN-LSTM hybrid model
+- Convolutional layers for spatial feature extraction
+- Max-pooling layer for dimensionality reduction
+- LSTM layer to capture temporal dependencies
+- Dropout layer to prevent overfitting
+- Dense output layer with sigmoid activation
 
- CNN-LSTM Hybrid Model:
-       Novel architecture combining CNNs for spatial feature extraction and LSTMs for temporal modeling.
-       Designed to capture complex patterns and relationships within network traffic data for accurate DDoS detection.
- Data Preprocessing and Feature Engineering:
-       Handles missing values, label encoding, and feature scaling for optimal model performance.
-       Groups features into meaningful categories and reshapes data into 2D grids for CNN input.
- Baseline Models:
-       Compares the CNN-LSTM model to a range of traditional and deep learning models:
-           Random Forest, Logistic Regression, Multi-Layer Perceptron (MLP), XGBoost, SVM, KNN, 1D CNN, 2D CNN
- Evaluation:
-       Rigorous evaluation on the CIC-IDS2017 dataset using accuracy, precision, recall, F1 score, and AUC.
-       Confusion matrices and ROC curve analysis provide detailed insights into model performance.
+## Performance Metrics
+- Accuracy: 99.93%
+- F1 Score: 0.9993
+- Precision: 0.9996
+- Recall: 0.9990
 
-Results:
+## Challenges and Limitations
+- Potential overfitting in deep learning models
+- Limited dataset diversity compared to real-world scenarios
+- Need for real-time deployment evaluation
 
-   The CNN-LSTM model demonstrates superior performance compared to baseline models, achieving high accuracy and low false positive/negative rates.
-   The hybrid architecture effectively captures both spatial and temporal patterns in network traffic, leading to more accurate DDoS detection.
+## Potential Model Improvements
+- Explore alternative regularization techniques (L1, L2)
+- Investigate different feature engineering approaches
+- Evaluate on more recent and diverse datasets
+- Assess real-time performance and adaptability
+- Incorporate additional data sources (network logs, system metrics)
 
-Potential Applications:
-
-   Real-time DDoS attack detection and mitigation in network security systems.
-   Identification of emerging attack patterns and improvement of existing detection mechanisms.
-   Contribution to the advancement of machine learning-based cybersecurity solutions.
-
+## Future Directions
+- Enhance model robustness and generalizability
+- Explore transfer learning for adapting to new attack patterns
+- Investigate interpretability and explainability of model decisions
+- Develop ensemble methods combining multiple detection techniques
+- Integration with existing network security infrastructure
